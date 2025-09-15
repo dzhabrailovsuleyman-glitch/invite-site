@@ -1,95 +1,163 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Приглашение на свидание</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-body, html { 
-    margin:0; 
-    padding:0; 
-    overflow-x:hidden; 
-    font-family:'Montserrat', sans-serif; 
-    color:#fff; 
-    background:#000; 
-    scroll-snap-type: y mandatory; 
-}
-section { 
-    height:100vh; 
-    display:flex; 
-    justify-content:center; 
-    align-items:center; 
-    text-align:center; 
-    padding:0 20px; 
-    position:relative; 
-    scroll-snap-align:start; 
-}
-#screen1 { background: radial-gradient(circle at center, #111 0%, #000 100%); }
-#screen2 { background: url('https://i.ibb.co/6rQvD9T/night-city-silhouette.png') no-repeat center/cover; }
-#screen3 { background:#1a1a1a; color:#ff3860; }
-h1 { font-size:2.2em; margin:0.5em 0; }
-p { font-size:1.2em; margin:0.5em 0; }
-.button { 
-    margin-top:1em; 
-    padding:0.8em 1.5em; 
-    font-size:1.1em; 
-    background:#ffcc00; 
-    color:#000; 
-    border:none; 
-    border-radius:8px; 
-    cursor:pointer; 
-    text-decoration:none; 
-    transition:transform 0.2s; 
-}
-.button:hover { transform:scale(1.05); }
-.bats { 
-    position:absolute; 
-    width:50px; 
-    height:50px; 
-    background:url('https://i.ibb.co/3hPdpW1/bat.png') no-repeat center/contain; 
-    top:-60px; 
-    animation:fly 10s linear infinite; 
-}
-@keyframes fly { 
-    0%{transform:translateX(0) translateY(0) rotate(0deg);} 
-    25%{transform:translateX(100vw) translateY(20vh) rotate(15deg);} 
-    50%{transform:translateX(50vw) translateY(40vh) rotate(-10deg);} 
-    75%{transform:translateX(80vw) translateY(10vh) rotate(5deg);} 
-    100%{transform:translateX(100vw) translateY(0) rotate(0deg);} 
-}
-audio { display:none; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Готэмское приглашение</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: black;
+      color: white;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.5s ease both;
+    }
+
+    h1, p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      animation-delay: 0.5s;
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
+
+    p:nth-of-type(1) { animation-delay: 1.5s; }
+    p:nth-of-type(2) { animation-delay: 2s; }
+    p:nth-of-type(3) { animation-delay: 2.5s; }
+
+    a {
+      color: #ffcc00;
+      text-decoration: underline;
+      font-size: 1.3rem;
+    }
+
+    .intro {
+      background: url('https://cs12.pikabu.ru/post_img/2021/09/13/7/1631532363177560675.jpg') no-repeat center/cover;
+    }
+
+    .map-section {
+      background: url('https://image.fonwall.ru/o/cn/batman-superheroes-artwork-artstation-exsb.jpeg') no-repeat center/cover;
+    }
+
+    .final-section {
+      background: url('https://skillbox.ru/upload/setka_images/19260021112024_3a8a35edbbb0fcf503b895fe11dc2a1ad6806596.jpg') no-repeat center/cover;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #888;
+      padding: 1rem;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Спецэффекты: Летучие мыши */
+    .bat {
+      position: absolute;
+      width: 40px;
+      height: auto;
+      animation: fly 10s linear infinite;
+      opacity: 0.6;
+      z-index: 3;
+    }
+
+    @keyframes fly {
+      0%   { transform: translateX(-100px) translateY(0) rotate(0deg); }
+      50%  { transform: translateX(100vw) translateY(-50vh) rotate(180deg); }
+      100% { transform: translateX(-100px) translateY(0) rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-<audio autoplay loop>
-<source src="https://www.soundjay.com/nature/sounds/bat-flap-1.mp3" type="audio/mpeg">
-Ваш браузер не поддерживает аудио.
-</audio>
 
-<section id="screen1">
-<div class="bats"></div>
-<div>
-<h1>Приветствую Вас, Асхаб.</h1>
-<p>Махачкала ждала этого момента…</p>
-<p style="font-size:1em; color:#ccc;">Листайте вниз для подробностей ⬇️</p>
-</div>
-</section>
+  <!-- Летучие мыши -->
+  <img src="https://avatarko.ru/img/kartinka/33/Batman_letuchaya_mysh_32727.jpg" class="bat" style="top:10%; left:0%; animation-delay: 0s;">
+  <img src="https://avatarko.ru/img/kartinka/33/Batman_letuchaya_mysh_32727.jpg" class="bat" style="top:30%; left:-10%; animation-delay: 2s;">
+  <img src="https://avatarko.ru/img/kartinka/33/Batman_letuchaya_mysh_32727.jpg" class="bat" style="top:50%; left:-20%; animation-delay: 4s;">
 
-<section id="screen2">
-<div>
-<h1>Это персональное приглашение на ваше первое свидание.</h1>
-<p>Место уже выбрано. Осталось только проследовать по маршруту.</p>
-<a class="button" href="https://2gis.ru/makhachkala/geo/15903971839320624/47.514409,42.983386" target="_blank">Следуйте маршруту</a>
-</div>
-</section>
+  <!-- Вступление -->
+  <section class="intro">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Приветствую вас, Асхаб</h1>
+      <p>Махачкала ждала этого момента...</p>
+      <p>Листай вниз для подробностей ⬇️</p>
+    </div>
+  </section>
 
-<section id="screen3">
-<div>
-<h1>Пусть это будет первое свидание…</h1>
-<p>…но точно не последнее. ❤️</p>
-<p style="font-size:1em; color:#ccc;">Конец? Нет. Только начало…</p>
-</div>
-</section>
+  <!-- Секция с маршрутом -->
+  <section class="map-section">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1 style="animation-delay: 0.5s;">Это персональное приглашение на первое свидание</h1>
+      <p style="animation-delay: 1.5s;">Место уже выбрано</p>
+      <p style="animation-delay: 2s;">Осталось только проследовать маршруту:</p>
+      <p style="animation-delay: 2.5s;">
+        <a href="https://2gis.ru/makhachkala/geo/15903971839320624/47.514409%2C42.983386" target="_blank">
+          Открыть в 2ГИС
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Финальная секция -->
+  <section class="final-section">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1 style="animation-delay: 0.5s;">Пусть это будет первая встреча…</h1>
+      <p style="animation-delay: 1.5s;">…но точно не последняя ❤️</p>
+      <p style="animation-delay: 2s; font-size: 0.9em;">Скоро увидимся…</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; Gotham Invitation, 2025
+  </footer>
 </body>
 </html>
