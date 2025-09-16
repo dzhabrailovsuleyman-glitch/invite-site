@@ -1,103 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Готэм-приглашение</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     html, body {
       height: 100%;
-      overflow-x: hidden;
-      scroll-snap-type: y mandatory;
       font-family: 'Montserrat', sans-serif;
+      scroll-snap-type: y mandatory;
+      overflow-x: hidden;
       background: #000;
-      color: #fff;
+      color: #FFD700;
     }
-
     section {
+      scroll-snap-align: start;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       text-align: center;
-      position: relative;
-      scroll-snap-align: start;
-      padding: 0 20px;
+      padding: 2em;
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
+      position: relative;
     }
-
-    #screen1 {
-      background-image: url('https://i.pinimg.com/1200x/ea/59/be/ea59be59afa2b96f429738adf66b18c1.jpg');
-    }
-
-    #screen2 {
-      background-image: url('https://image.fonwall.ru/o/cn/batman-superheroes-artwork-artstation-exsb.jpeg');
-    }
-
-    #screen3 {
-      background-image: url('https://skillbox.ru/upload/setka_images/19260021112024_3a8a35edbbb0fcf503b895fe11dc2a1ad6806596.jpg');
-    }
-
-    h1, p, a {
+    h1, p {
       opacity: 0;
       transform: translateY(20px);
-      animation: fadeInUp 1s forwards;
+      animation: fadeInUp 1.5s forwards;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px #000;
     }
-
-    h1 { animation-delay: 0.3s; font-size: 2.5em; }
-    p  { animation-delay: 0.6s; font-size: 1.3em; }
-    a  { animation-delay: 0.9s; }
-
+    h1 {
+      font-size: 2.5em;
+      animation-delay: 0.3s;
+    }
+    p {
+      font-size: 1.3em;
+      animation-delay: 0.6s;
+    }
     .button {
-      margin-top: 1em;
-      padding: 0.8em 1.5em;
-      font-size: 1.1em;
-      background: #ffcc00;
+      margin-top: 1.5em;
+      padding: 1em 2em;
+      font-size: 1.2em;
+      background: #FFD700;
       color: #000;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      border-radius: 10px;
       text-decoration: none;
-      transition: transform 0.2s;
+      font-weight: bold;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
     }
-
     .button:hover {
       transform: scale(1.05);
     }
-
     .bats {
       position: absolute;
       width: 60px;
       height: 60px;
-      background: url('https://cs12.pikabu.ru/post_img/2021/09/13/7/1631532363177560675.jpg') no-repeat center/contain;
+      background: url('https://avatarko.ru/img/kartinka/33/Batman_letuchaya_mysh_32727.jpg') no-repeat center/contain;
       top: -60px;
       animation: fly 12s linear infinite;
     }
-
     @keyframes fly {
-      0%   { transform: translateX(0vw)   translateY(0vh)   rotate(0deg);   }
-      25%  { transform: translateX(25vw)  translateY(20vh)  rotate(10deg);  }
-      50%  { transform: translateX(50vw)  translateY(40vh)  rotate(-10deg); }
-      75%  { transform: translateX(75vw)  translateY(10vh)  rotate(5deg);   }
-      100% { transform: translateX(100vw) translateY(0vh)   rotate(0deg);   }
+      0% { transform: translateX(-10vw) translateY(0) rotate(0deg); }
+      25% { transform: translateX(30vw) translateY(15vh) rotate(15deg); }
+      50% { transform: translateX(60vw) translateY(25vh) rotate(-10deg); }
+      75% { transform: translateX(90vw) translateY(10vh) rotate(5deg); }
+      100% { transform: translateX(110vw) translateY(0) rotate(0deg); }
     }
-
     @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
+      to {
         opacity: 1;
         transform: translateY(0);
       }
@@ -109,33 +91,27 @@
     <source src="https://www.soundjay.com/nature/sounds/bat-flap-1.mp3" type="audio/mpeg">
   </audio>
 
-  <section id="screen1">
+  <section style="background-image: url('https://i.pinimg.com/1200x/ea/59/be/ea59be59afa2b96f429738adf66b18c1.jpg');">
     <div class="bats"></div>
-    <div>
-      <h1>Приветствую вас, Асхаб.</h1>
-      <p>Махачкала ждала этого момента…</p>
-    </div>
+    <h1>Приветствую вас, Асхаб.</h1>
+    <p>Махачкала ждала этого момента…</p>
   </section>
 
-  <section id="screen2">
-    <div>
-      <h1>Это персональное приглашение на первое свидание</h1>
-      <p>Листай вниз для подробностей ⬇️</p>
-    </div>
+  <section style="background-image: url('https://image.fonwall.ru/o/cn/batman-superheroes-artwork-artstation-exsb.jpeg');">
+    <h1>Это персональное приглашение на первое свидание</h1>
+    <p>Листай вниз для подробностей ⬇️</p>
   </section>
 
-  <section id="screen3">
-    <div>
-      <h1>Место уже выбрано</h1>
-      <p>Осталось только проследовать по маршруту</p>
-      <a class="button" href="https://2gis.ru/makhachkala/geo/15903971839320624/47.514409%2C42.983386" target="_blank">Следуйте маршруту</a>
-    </div>
+  <section style="background-image: url('https://skillbox.ru/upload/setka_images/19260021112024_3a8a35edbbb0fcf503b895fe11dc2a1ad6806596.jpg');">
+    <h1>Место уже выбрано</h1>
+    <p>Осталось только проследовать по маршруту</p>
+    <a class="button" href="https://2gis.ru/makhachkala/geo/15903971839320624/47.514409%2C42.983386" target="_blank">Следовать маршруту</a>
   </section>
 
-  <section style="background:#000; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-    <h1 style="color:#ff3860; animation-delay:0.3s;">Пусть это будет первая встреча…</h1>
-    <p style="color:#ccc; animation-delay:0.6s;">…но точно не последняя. ❤️</p>
-    <p style="font-size:1em; color:#666; animation-delay:0.9s;">Конец? Нет. Только начало…</p>
+  <section style="background-image: url('https://vcomicse.ru/wp-content/uploads/2018/09/396b8355814081.59fb6a475407b.jpg');">
+    <h1>Пусть это будет первая встреча…</h1>
+    <p>…но точно не последняя. ❤️</p>
+    <p>Конец? Нет. Только начало…</p>
   </section>
 </body>
 </html>
