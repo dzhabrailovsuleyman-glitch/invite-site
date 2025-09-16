@@ -1,163 +1,141 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Готэмское приглашение</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Готэм-приглашение</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: black;
-      color: white;
-      scroll-behavior: smooth;
+    html, body {
+      height: 100%;
       overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: #fff;
     }
 
     section {
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 2rem;
       position: relative;
+      scroll-snap-align: start;
+      padding: 0 20px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1;
+    #screen1 {
+      background-image: url('https://i.pinimg.com/1200x/ea/59/be/ea59be59afa2b96f429738adf66b18c1.jpg');
     }
 
-    .content {
-      position: relative;
-      z-index: 2;
-      animation: fadeInUp 1.5s ease both;
+    #screen2 {
+      background-image: url('https://image.fonwall.ru/o/cn/batman-superheroes-artwork-artstation-exsb.jpeg');
     }
 
-    h1, p {
+    #screen3 {
+      background-image: url('https://skillbox.ru/upload/setka_images/19260021112024_3a8a35edbbb0fcf503b895fe11dc2a1ad6806596.jpg');
+    }
+
+    h1, p, a {
       opacity: 0;
       transform: translateY(20px);
-      animation: fadeInUp 1s ease forwards;
+      animation: fadeInUp 1s forwards;
     }
 
-    h1 {
-      font-size: 2.8rem;
-      animation-delay: 0.5s;
+    h1 { animation-delay: 0.3s; font-size: 2.5em; }
+    p  { animation-delay: 0.6s; font-size: 1.3em; }
+    a  { animation-delay: 0.9s; }
+
+    .button {
+      margin-top: 1em;
+      padding: 0.8em 1.5em;
+      font-size: 1.1em;
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s;
     }
 
-    p {
-      font-size: 1.4rem;
+    .button:hover {
+      transform: scale(1.05);
     }
 
-    p:nth-of-type(1) { animation-delay: 1.5s; }
-    p:nth-of-type(2) { animation-delay: 2s; }
-    p:nth-of-type(3) { animation-delay: 2.5s; }
-
-    a {
-      color: #ffcc00;
-      text-decoration: underline;
-      font-size: 1.3rem;
+    .bats {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: url('https://cs12.pikabu.ru/post_img/2021/09/13/7/1631532363177560675.jpg') no-repeat center/contain;
+      top: -60px;
+      animation: fly 12s linear infinite;
     }
 
-    .intro {
-      background: url('https://cs12.pikabu.ru/post_img/2021/09/13/7/1631532363177560675.jpg') no-repeat center/cover;
-    }
-
-    .map-section {
-      background: url('https://image.fonwall.ru/o/cn/batman-superheroes-artwork-artstation-exsb.jpeg') no-repeat center/cover;
-    }
-
-    .final-section {
-      background: url('https://skillbox.ru/upload/setka_images/19260021112024_3a8a35edbbb0fcf503b895fe11dc2a1ad6806596.jpg') no-repeat center/cover;
-    }
-
-    footer {
-      background: #000;
-      text-align: center;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: #888;
-      padding: 1rem;
+    @keyframes fly {
+      0%   { transform: translateX(0vw)   translateY(0vh)   rotate(0deg);   }
+      25%  { transform: translateX(25vw)  translateY(20vh)  rotate(10deg);  }
+      50%  { transform: translateX(50vw)  translateY(40vh)  rotate(-10deg); }
+      75%  { transform: translateX(75vw)  translateY(10vh)  rotate(5deg);   }
+      100% { transform: translateX(100vw) translateY(0vh)   rotate(0deg);   }
     }
 
     @keyframes fadeInUp {
-      to {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
-    /* Спецэффекты: Летучие мыши */
-    .bat {
-      position: absolute;
-      width: 40px;
-      height: auto;
-      animation: fly 10s linear infinite;
-      opacity: 0.6;
-      z-index: 3;
-    }
-
-    @keyframes fly {
-      0%   { transform: translateX(-100px) translateY(0) rotate(0deg); }
-      50%  { transform: translateX(100vw) translateY(-50vh) rotate(180deg); }
-      100% { transform: translateX(-100px) translateY(0) rotate(360deg); }
-    }
   </style>
 </head>
 <body>
+  <audio autoplay loop>
+    <source src="https://www.soundjay.com/nature/sounds/bat-flap-1.mp3" type="audio/mpeg">
+  </audio>
 
-  <!-- Летучие мыши -->
-  <img src="https://avatarko.ru/img/kartinka/33/Batman_letuchaya_mysh_32727.jpg" class="bat" style="top:10%; left:0%; animation-delay: 0s;">
-  <img src="https://avatarko.ru/img/kartinka/33/Batman_letuchaya_mysh_32727.jpg" class="bat" style="top:30%; left:-10%; animation-delay: 2s;">
-  <img src="https://avatarko.ru/img/kartinka/33/Batman_letuchaya_mysh_32727.jpg" class="bat" style="top:50%; left:-20%; animation-delay: 4s;">
+  <section id="screen1">
+    <div class="bats"></div>
+    <div>
+      <h1>Приветствую вас, Асхаб.</h1>
+      <p>Махачкала ждала этого момента…</p>
+    </div>
+  </section>
 
-  <!-- Вступление -->
-  <section class="intro">
-    <div class="overlay"></div>
-    <div class="content">
-      <h1>Приветствую вас, Асхаб</h1>
-      <p>Махачкала ждала этого момента...</p>
+  <section id="screen2">
+    <div>
+      <h1>Это персональное приглашение на первое свидание</h1>
       <p>Листай вниз для подробностей ⬇️</p>
     </div>
   </section>
 
-  <!-- Секция с маршрутом -->
-  <section class="map-section">
-    <div class="overlay"></div>
-    <div class="content">
-      <h1 style="animation-delay: 0.5s;">Это персональное приглашение на первое свидание</h1>
-      <p style="animation-delay: 1.5s;">Место уже выбрано</p>
-      <p style="animation-delay: 2s;">Осталось только проследовать маршруту:</p>
-      <p style="animation-delay: 2.5s;">
-        <a href="https://2gis.ru/makhachkala/geo/15903971839320624/47.514409%2C42.983386" target="_blank">
-          Открыть в 2ГИС
-        </a>
-      </p>
+  <section id="screen3">
+    <div>
+      <h1>Место уже выбрано</h1>
+      <p>Осталось только проследовать по маршруту</p>
+      <a class="button" href="https://2gis.ru/makhachkala/geo/15903971839320624/47.514409%2C42.983386" target="_blank">Следуйте маршруту</a>
     </div>
   </section>
 
-  <!-- Финальная секция -->
-  <section class="final-section">
-    <div class="overlay"></div>
-    <div class="content">
-      <h1 style="animation-delay: 0.5s;">Пусть это будет первая встреча…</h1>
-      <p style="animation-delay: 1.5s;">…но точно не последняя ❤️</p>
-      <p style="animation-delay: 2s; font-size: 0.9em;">Скоро увидимся…</p>
-    </div>
+  <section style="background:#000; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+    <h1 style="color:#ff3860; animation-delay:0.3s;">Пусть это будет первая встреча…</h1>
+    <p style="color:#ccc; animation-delay:0.6s;">…но точно не последняя. ❤️</p>
+    <p style="font-size:1em; color:#666; animation-delay:0.9s;">Конец? Нет. Только начало…</p>
   </section>
-
-  <footer>
-    &copy; Gotham Invitation, 2025
-  </footer>
 </body>
 </html>
